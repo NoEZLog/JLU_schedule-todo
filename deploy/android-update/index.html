@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JLU_schedule Android 更新</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f3f6fb; color: #18243a; }
+    main { box-sizing: border-box; width: min(92vw, 620px); padding: 32px; border-radius: 20px; background: #fff; box-shadow: 0 12px 40px #243a5c17; }
+    h1 { margin: 0 0 8px; font-size: 1.7rem; }
+    .version { color: #566780; margin: 0 0 28px; }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; }
+    a.button { display: inline-block; padding: 12px 18px; border-radius: 10px; color: #fff; background: #2454a6; text-decoration: none; font-weight: 600; }
+    a.button.secondary { color: #2454a6; background: #e8eef9; }
+    p { line-height: 1.7; }
+    .note { margin-top: 28px; font-size: .93rem; color: #566780; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #111827; color: #eef2f9; }
+      main { background: #1b2638; box-shadow: none; }
+      .version, .note { color: #bdc9da; }
+      a.button.secondary { color: #d7e6ff; background: #334763; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>JLU_schedule Android</h1>
+    <p class="version">正式版 v2.2.2 · Android 8.0 及以上</p>
+    <div class="links">
+      <a class="button" href="https://github.com/JFyuhong/JLU_schedule/releases/download/v2.2.2/JLU_schedule.apk">GitHub 下载 APK</a>
+    </div>
+    <p class="note">国内镜像因域名备案或接入备案阻断，暂不能稳定下载。完成备案并从外部网络验证后恢复。</p>
+    <p class="note">从 v1.2 升级时，请直接覆盖安装以保留本地数据。首次升级需手动下载；此后可在应用设置中检查更新。<a href="./stable.json">查看签名更新清单</a>。</p>
+  </main>
+</body>
+</html>

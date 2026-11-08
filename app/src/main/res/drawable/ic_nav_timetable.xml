@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 课表：外框(evenOdd 镂空) + 顶部双把手 + 右下课程块，边条 3 单位粗，小尺寸清晰 -->
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M4,4h16c1.1,0 2,0.9 2,2v14c0,1.1 -0.9,2 -2,2L4,22c-1.1,0 -2,-0.9 -2,-2L2,6c0,-1.1 0.9,-2 2,-2zM5,8h14v11L5,19zM6.5,2h2v2h-2zM15.5,2h2v2h-2z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,11h6v6.5h-6z" />
+</vector>

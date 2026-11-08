@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 云备份与设备迁移均排除加密凭据与会话 Cookie（密钥不可迁移，恢复后即为坏数据） -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude
+            domain="sharedpref"
+            path="jlu_account_secure.xml" />
+        <exclude
+            domain="file"
+            path="auth" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude
+            domain="sharedpref"
+            path="jlu_account_secure.xml" />
+        <exclude
+            domain="file"
+            path="auth" />
+    </device-transfer>
+</data-extraction-rules>

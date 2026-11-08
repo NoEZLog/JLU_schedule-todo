@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/gpaRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusableInTouchMode="true"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/gpaTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gpa_title"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/gpaSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/gpa_subtitle"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp" />
+
+        <!-- 计算结果 -->
+        <LinearLayout
+            android:id="@+id/gpaResultCard"
+            style="@style/SettingsCard">
+
+            <LinearLayout style="@style/SettingsCardHeader">
+                <ImageView
+                    style="@style/SettingsCardIcon"
+                    android:src="@drawable/ic_settings_tools"
+                    android:contentDescription="@null" />
+                <TextView
+                    style="@style/SettingsCardTitle"
+                    android:text="@string/gpa_result_header" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gpaValueGpa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="3.86" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/gpa_result_gpa"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorSecondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gpaValueWeighted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="86.40" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/gpa_result_weighted"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorSecondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gpaValueArithmetic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="87.10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/gpa_result_arithmetic"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorSecondary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/gpaResultMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/gpaImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/gpa_import_jw" />
+
+        <!-- 课程列表 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/gpa_courses_header"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <TextView
+            android:id="@+id/gpaEmptyHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/gpa_courses_empty"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/gpaCourseList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <!-- 添加课程 -->
+        <LinearLayout
+            android:id="@+id/gpaAddCard"
+            style="@style/SettingsCard"
+            android:layout_marginTop="6dp">
+
+            <LinearLayout style="@style/SettingsCardHeader">
+                <ImageView
+                    style="@style/SettingsCardIcon"
+                    android:src="@drawable/ic_settings_calendar"
+                    android:contentDescription="@null" />
+                <TextView
+                    style="@style/SettingsCardTitle"
+                    android:text="@string/gpa_add_header" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gpaTypeGroup"
+                style="@style/SettingsSegment">
+                <TextView
+                    android:id="@+id/gpaTypePercent"
+                    style="@style/SettingsSegmentButton"
+                    android:text="@string/gpa_type_percent" />
+                <TextView
+                    android:id="@+id/gpaTypeLevel"
+                    style="@style/SettingsSegmentButton"
+                    android:text="@string/gpa_type_level" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/gpaNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:hint="@string/gpa_course_name_hint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/gpaScoreInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/gpa_score_hint"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/gpaLevelGroup"
+                style="@style/SettingsSegment"
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/gpaLevelExcellent"
+                    style="@style/SettingsSegmentButton"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="@string/gpa_level_excellent" />
+                <TextView
+                    android:id="@+id/gpaLevelGood"
+                    style="@style/SettingsSegmentButton"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="@string/gpa_level_good" />
+                <TextView
+                    android:id="@+id/gpaLevelMedium"
+                    style="@style/SettingsSegmentButton"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="@string/gpa_level_medium" />
+                <TextView
+                    android:id="@+id/gpaLevelPass"
+                    style="@style/SettingsSegmentButton"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="@string/gpa_level_pass" />
+                <TextView
+                    android:id="@+id/gpaLevelFail"
+                    style="@style/SettingsSegmentButton"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="@string/gpa_level_fail" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/gpaCreditInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/gpa_credit_hint"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <Button
+                    android:id="@+id/gpaAddButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/gpa_add" />
+
+                <Button
+                    android:id="@+id/gpaClearButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gpa_clear" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 隐藏的成绩抓取 WebView（打开教务成绩页并捕获页面自身请求） -->
+        <WebView
+            android:id="@+id/gpaFetchWebView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            tools:ignore="WebViewLayout" />
+    </LinearLayout>
+</ScrollView>

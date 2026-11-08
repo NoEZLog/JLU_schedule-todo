@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/toolsRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/toolsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:text="@string/nav_tools"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <!-- 学业与成绩 -->
+        <LinearLayout
+            android:id="@+id/toolsCardAcademics"
+            style="@style/SettingsCard">
+
+            <LinearLayout style="@style/SettingsCardHeader">
+                <ImageView
+                    android:id="@+id/iconToolAcademics"
+                    style="@style/SettingsCardIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_tool_grade" />
+                <TextView
+                    style="@style/SettingsCardTitle"
+                    android:text="@string/tools_study_title" />
+            </LinearLayout>
+
+            <!-- 成绩查询 -->
+            <LinearLayout
+                android:id="@+id/rowGradeInquiry"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_grade_inquiry_title" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <TextView
+                style="@style/SettingsCardHint"
+                android:text="@string/tools_grade_inquiry_hint" />
+
+            <!-- 绩点计算器 -->
+            <LinearLayout
+                android:id="@+id/rowGpaCalculator"
+                style="@style/SettingsRow"
+                android:layout_marginTop="8dp">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/settings_tool_gpa" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <TextView
+                style="@style/SettingsCardHint"
+                android:text="@string/settings_tool_gpa_hint" />
+
+            <!-- 学业完成查询 (暂存隐藏) -->
+            <LinearLayout
+                android:id="@+id/rowAcademicProgress"
+                style="@style/SettingsRow"
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_academic_progress_title" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/hintAcademicProgress"
+                style="@style/SettingsCardHint"
+                android:text="@string/tools_academic_progress_hint"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- 考务与日程 -->
+        <LinearLayout
+            android:id="@+id/toolsCardExams"
+            style="@style/SettingsCard"
+            android:layout_marginTop="4dp">
+
+            <LinearLayout style="@style/SettingsCardHeader">
+                <ImageView
+                    android:id="@+id/iconToolExams"
+                    style="@style/SettingsCardIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_tool_exam" />
+                <TextView
+                    style="@style/SettingsCardTitle"
+                    android:text="@string/tools_exam_schedule_title" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowExamSchedule"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/exam_schedule_title" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <TextView
+                style="@style/SettingsCardHint"
+                android:text="@string/tools_exam_schedule_hint" />
+
+            <!-- 待办管理 -->
+            <LinearLayout
+                android:id="@+id/rowTodo"
+                style="@style/SettingsRow"
+                android:layout_marginTop="8dp">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_todo_title" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <TextView
+                style="@style/SettingsCardHint"
+                android:text="@string/tools_todo_hint" />
+        </LinearLayout>
+
+        <!-- 智慧教育平台直达 -->
+        <LinearLayout
+            android:id="@+id/toolsCardWeb"
+            style="@style/SettingsCard"
+            android:layout_marginTop="4dp">
+
+            <LinearLayout style="@style/SettingsCardHeader">
+                <ImageView
+                    android:id="@+id/iconToolWeb"
+                    style="@style/SettingsCardIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_tool_web" />
+                <TextView
+                    style="@style/SettingsCardTitle"
+                    android:text="@string/tools_web_direct_title" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowWebPortal"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_web_portal" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowWebGrade"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_web_grade" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowWebExam"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_web_exam" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowWebAcademic"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/tools_web_academic" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

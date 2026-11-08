@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- iedu.jlu.edu.cn 漏发 RapidSSL TLS RSA CA G1 中间证书；cas.jlu.edu.cn 会下发。
+         只为吉大域名补齐该 CA（SHA-256: 4422E963EE53CD58CC9F85CD40BF5FFEC0095FDF1A154535661C1C06BCADC69B），
+         仍校验完整证书链与主机名；其他站点只信任系统 CA。中间证书有效期至 2027-11-02。 -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">jlu.edu.cn</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+            <certificates src="@raw/rapidssl_tls_rsa_ca_g1" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

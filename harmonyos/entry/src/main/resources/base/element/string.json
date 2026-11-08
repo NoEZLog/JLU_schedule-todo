@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "app_name", "value": "JLU Schedule" },
+    { "name": "module_desc", "value": "吉林大学课表主模块" },
+    { "name": "ability_desc", "value": "课表主入口" }
+  ]
+}

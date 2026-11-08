@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 浮动卡片：外层负责四周留边（底部导航避让），内层卡片全圆角 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:id="@+id/detailCardRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <!-- 拖拽把手 -->
+        <View
+            android:id="@+id/detailHandle"
+            android:layout_width="36dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_course_sheet_handle" />
+
+        <!-- 课程冲突横幅与切换 Tab（仅多门课程时间冲突时显示） -->
+        <LinearLayout
+            android:id="@+id/detailConflictContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/detailConflictBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时间冲突 (2门)"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/detailPinCoverBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设为课表封面"
+                    android:textSize="12sp"
+                    android:includeFontPadding="false"
+                    android:paddingStart="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="4dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/detailConflictTabs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <!-- 课程名 -->
+        <TextView
+            android:id="@+id/detailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <!-- 时间横幅：与课表格子同色系，强化视觉关联 -->
+        <LinearLayout
+            android:id="@+id/detailBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingStart="14dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/detailBannerSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailBannerTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- 信息行：图标圆片 + 标签 + 值，点击复制 -->
+        <LinearLayout
+            android:id="@+id/rowTeacher"
+            style="@style/CourseDetailRow">
+            <FrameLayout style="@style/CourseDetailIconChip">
+                <ImageView
+                    android:id="@+id/detailIconTeacher"
+                    style="@style/CourseDetailIcon"
+                    android:src="@drawable/ic_detail_person"
+                    android:contentDescription="@null" />
+            </FrameLayout>
+            <TextView
+                style="@style/CourseDetailLabel"
+                android:text="@string/course_detail_teacher" />
+            <TextView
+                android:id="@+id/detailTeacher"
+                style="@style/CourseDetailValue" />
+        </LinearLayout>
+
+        <View
+                android:id="@+id/dividerOne"
+                style="@style/CourseDetailDivider" />
+
+        <LinearLayout
+            android:id="@+id/rowLocation"
+            style="@style/CourseDetailRow">
+            <FrameLayout style="@style/CourseDetailIconChip">
+                <ImageView
+                    android:id="@+id/detailIconLocation"
+                    style="@style/CourseDetailIcon"
+                    android:src="@drawable/ic_detail_place"
+                    android:contentDescription="@null" />
+            </FrameLayout>
+            <TextView
+                style="@style/CourseDetailLabel"
+                android:text="@string/course_detail_location" />
+            <TextView
+                android:id="@+id/detailLocation"
+                style="@style/CourseDetailValue" />
+        </LinearLayout>
+
+        <View
+                android:id="@+id/dividerTwo"
+                style="@style/CourseDetailDivider" />
+
+        <LinearLayout
+            android:id="@+id/rowWeeks"
+            style="@style/CourseDetailRow">
+            <FrameLayout style="@style/CourseDetailIconChip">
+                <ImageView
+                    android:id="@+id/detailIconWeeks"
+                    style="@style/CourseDetailIcon"
+                    android:src="@drawable/ic_detail_week"
+                    android:contentDescription="@null" />
+            </FrameLayout>
+            <TextView
+                style="@style/CourseDetailLabel"
+                android:text="@string/course_detail_weeks" />
+            <TextView
+                android:id="@+id/detailWeeks"
+                style="@style/CourseDetailValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowSemester"
+            style="@style/CourseDetailRow">
+            <FrameLayout style="@style/CourseDetailIconChip">
+                <ImageView
+                    android:id="@+id/detailIconSemester"
+                    style="@style/CourseDetailIcon"
+                    android:src="@drawable/ic_detail_semester"
+                    android:contentDescription="@null" />
+            </FrameLayout>
+            <TextView
+                style="@style/CourseDetailLabel"
+                android:text="@string/course_detail_semester" />
+            <TextView
+                android:id="@+id/detailMeta"
+                style="@style/CourseDetailValue" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/detailCopyHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@string/course_detail_copy_hint"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/detailNewTodoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/course_detail_new_todo"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/detailEditCourseBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/course_detail_edit"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/detailDeleteCourseBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/course_detail_delete"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+</FrameLayout>

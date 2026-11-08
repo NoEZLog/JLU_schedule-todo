@@ -1,0 +1,9 @@
+{
+  "name": "entry",
+  "version": "1.2.0",
+  "description": "JLU Schedule entry module",
+  "main": "",
+  "author": "",
+  "license": "GPL-3.0-only",
+  "dependencies": {}
+}

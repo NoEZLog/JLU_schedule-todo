@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 校园账号凭据与会话 Cookie 不参与云备份：加密密钥在本机 Keystore，恢复后无法解密 -->
+<full-backup-content>
+    <exclude
+        domain="sharedpref"
+        path="jlu_account_secure.xml" />
+    <exclude
+        domain="file"
+        path="auth" />
+</full-backup-content>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SettingsPrimaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_height">46dp</item>
+        <item name="android:textColor">@color/warm_button_text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@color/warm_button_background</item>
+    </style>
+
+    <style name="SettingsSecondaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_height">46dp</item>
+        <item name="android:textColor">@color/warm_text_secondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:backgroundTint">@color/warm_panel_alt_background</item>
+    </style>
+</resources>

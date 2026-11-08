@@ -1,0 +1,18 @@
+{
+  "module": {
+    "name": "entry_test",
+    "type": "feature",
+    "deviceTypes": ["phone", "tablet"],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "abilities": [
+      {
+        "name": "TestAbility",
+        "srcEntry": "./ets/testability/TestAbility.ets",
+        "exported": true,
+        "startWindowIcon": "$media:app_icon",
+        "startWindowBackground": "$color:start_window_background"
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#E36A3A</color>
+
+    <!-- 暖色（浅色） -->
+    <color name="warm_page_background">#F4E4C6</color>
+    <color name="warm_nav_background">#FFF1DA</color>
+    <color name="warm_panel_background">#FFF1DA</color>
+    <color name="warm_panel_alt_background">#FFF5E4</color>
+    <color name="warm_text_primary">#513D29</color>
+    <color name="warm_text_secondary">#735B40</color>
+    <color name="warm_icon_tint">#896039</color>
+    <color name="warm_button_background">#EBD3AC</color>
+    <color name="warm_button_text">#51371F</color>
+    <color name="warm_grid_header">#EFDFC2</color>
+    <color name="warm_grid_header_today">#E7C69A</color>
+    <color name="warm_grid_left_column">#F3E6CC</color>
+    <color name="warm_grid_day_cell">#FFF5E4</color>
+    <color name="warm_grid_day_today">#F5E3C4</color>
+    <color name="warm_detail_card">#FFF1DA</color>
+    <color name="warm_detail_title">#513D29</color>
+    <color name="warm_detail_body">#644D34</color>
+    <color name="warm_detail_meta">#735B40</color>
+
+    <!-- 海蓝（浅色） -->
+    <color name="ocean_page_background">#F4F7FA</color>
+    <color name="ocean_nav_background">#FFFFFF</color>
+    <color name="ocean_panel_background">#FFFFFF</color>
+    <color name="ocean_panel_alt_background">#FFFFFF</color>
+    <color name="ocean_text_primary">#283647</color>
+    <color name="ocean_text_secondary">#58697A</color>
+    <color name="ocean_icon_tint">#356790</color>
+    <color name="ocean_button_background">#E3EDF7</color>
+    <color name="ocean_button_text">#244D70</color>
+    <color name="ocean_grid_header">#ECF1F6</color>
+    <color name="ocean_grid_header_today">#D9E8F6</color>
+    <color name="ocean_grid_left_column">#ECF1F6</color>
+    <color name="ocean_grid_day_cell">#FAFCFE</color>
+    <color name="ocean_grid_day_today">#EAF2F9</color>
+    <color name="ocean_detail_card">#FFFFFF</color>
+    <color name="ocean_detail_title">#283647</color>
+    <color name="ocean_detail_body">#45596D</color>
+    <color name="ocean_detail_meta">#58697A</color>
+
+    <!-- 薄荷（浅色） -->
+    <color name="mint_page_background">#F3F7F5</color>
+    <color name="mint_nav_background">#FEFFFE</color>
+    <color name="mint_panel_background">#FEFFFE</color>
+    <color name="mint_panel_alt_background">#FEFFFE</color>
+    <color name="mint_text_primary">#293A33</color>
+    <color name="mint_text_secondary">#536C60</color>
+    <color name="mint_icon_tint">#356B55</color>
+    <color name="mint_button_background">#E0EEE6</color>
+    <color name="mint_button_text">#285640</color>
+    <color name="mint_grid_header">#EAF1ED</color>
+    <color name="mint_grid_header_today">#D5E9DE</color>
+    <color name="mint_grid_left_column">#EAF1ED</color>
+    <color name="mint_grid_day_cell">#F9FCFA</color>
+    <color name="mint_grid_day_today">#E7F2EB</color>
+    <color name="mint_detail_card">#FEFFFE</color>
+    <color name="mint_detail_title">#293A33</color>
+    <color name="mint_detail_body">#455E51</color>
+    <color name="mint_detail_meta">#536C60</color>
+
+    <!-- 弹窗与通用输入框/面板组件色（浅色） -->
+    <color name="dialog_input_background">#FFFDF8</color>
+    <color name="dialog_input_stroke">#E8D8BF</color>
+    <color name="dialog_panel_background">#FFF8ED</color>
+    <color name="dialog_panel_stroke">#F0D8B6</color>
+    <color name="delete_icon_tint">#FF7043</color>
+</resources>

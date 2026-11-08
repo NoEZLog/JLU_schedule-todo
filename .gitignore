@@ -1,0 +1,66 @@
+# Android / Gradle build outputs
+build/
+**/build/
+.gradle/
+.kotlin/
+
+# Local machine config
+local.properties
+*.keystore
+*.jks
+
+# IDE files
+.idea/
+*.iml
+.zcode/
+
+# iOS / Xcode
+ios/Pods/
+ios/**/*.xcuserdatad/
+ios/DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# HarmonyOS / DevEco
+harmonyos/.hvigor/
+harmonyos/oh_modules/
+harmonyos/entry/build/
+harmonyos/entry/oh_modules/
+harmonyos/build/
+harmonyos/verify/.verify_tmp/
+harmonyos/local.properties
+**/.preview/
+
+# VS Code temp
+.vscode/.ropeproject/
+.debug/
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log
+hs_err_pid*
+replay_pid*
+
+# Java / Kotlin compiled artifacts
+*.class
+
+# Test / coverage
+**/captures/
+**/outputs/
+app/release
+local-signing.properties
+scripts/keys/
+*.pem
+!app/src/main/res/raw/*.pem
+release_keys/
+
+# Local promotional material and exports
+/media/promo/
+
+
+
+# Node / Web / PWA
+node_modules/
+**/node_modules/
+**/dist/
