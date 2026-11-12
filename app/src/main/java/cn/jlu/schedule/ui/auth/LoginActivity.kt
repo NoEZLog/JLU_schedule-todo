@@ -104,6 +104,7 @@ class LoginActivity : AppCompatActivity() {
             setAcceptThirdPartyCookies(webView, true)
         }
         webView.webViewClient = LoginWebViewClient()
+        cn.jlu.schedule.remote.VpnKeyCapture.attach(webView)
         JwApiClient.syncJarToWebView(this)
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -296,6 +297,7 @@ class LoginActivity : AppCompatActivity() {
                 attemptSavedWebLogin(url)
                 return
             }
+            cn.jlu.schedule.remote.VpnKeyCapture.onPageFinished(view, url)
             val host = runCatching { Uri.parse(url).host.orEmpty() }.getOrDefault("")
             // 已通过 VPN 打开被代理的教务页面（WebVPN 转接路径）才自动收尾；
             // 其余情况由用户点「完成登录并返回」手动确认，避免登录中途误退出。

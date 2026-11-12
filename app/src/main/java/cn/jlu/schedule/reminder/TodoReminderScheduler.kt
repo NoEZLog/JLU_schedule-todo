@@ -5,9 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import cn.jlu.schedule.data.AccountDataContext
 import cn.jlu.schedule.data.TodoItem
-import cn.jlu.schedule.data.TodoStore
 
 /**
  * 待办提醒调度：到期时刻 + 提前 N 天各安排一次闹钟。
@@ -46,12 +44,9 @@ object TodoReminderScheduler {
         }
     }
 
-    /** 开机/升级/恢复备份后全量重排当前账号的全部待办 */
+    /** 开机/升级/恢复备份后全量重排全部待办 */
     fun rescheduleAll(context: Context) {
-        val todos = AccountDataContext.get(context.filesDir).capture().use { dir ->
-            TodoStore.load(dir)
-        }.orEmpty()
-        for (item in todos) schedule(context, item)
+        for (item in TodoSync.load(context)) schedule(context, item)
     }
 
     private fun scheduleOne(context: Context, item: TodoItem, triggerAt: Long, advanceDays: Int) {

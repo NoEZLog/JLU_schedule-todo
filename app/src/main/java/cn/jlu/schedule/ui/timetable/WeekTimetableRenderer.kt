@@ -591,11 +591,17 @@ class WeekTimetableRenderer(
         val title = textView(name, 11.5f).apply { setTypeface(typeface, Typeface.BOLD) }
         val place = textView(location.ifBlank { "教室待定" }, 10f)
         val gap = dpToPx(card.context, 2f)
-        title.maxLines = ((availableHeight - place.lineHeight - gap) / title.lineHeight.coerceAtLeast(1))
+        // 地点优先：先按地点文本实际需要的行数分配，剩余给课程名（长地点不因格子矮被挤没）
+        place.measure(View.MeasureSpec.makeMeasureSpec(contentWidth, View.MeasureSpec.EXACTLY), heightSpec)
+        val placeDesired = (place.measuredHeight / place.lineHeight.coerceAtLeast(1))
+            .coerceIn(1, 12)
+        val titleMaxLines = ((availableHeight - placeDesired * place.lineHeight - gap) / title.lineHeight.coerceAtLeast(1))
             .coerceIn(1, preferredNameLines)
+        title.maxLines = titleMaxLines
         title.measure(View.MeasureSpec.makeMeasureSpec(contentWidth, View.MeasureSpec.EXACTLY), heightSpec)
         card.addView(title)
-        val locationLines = ((availableHeight - title.measuredHeight - gap + place.lineHeight / 2) / place.lineHeight.coerceAtLeast(1)).coerceIn(0, 12)
+        val locationLines = ((availableHeight - title.measuredHeight - gap) / place.lineHeight.coerceAtLeast(1))
+            .coerceIn(0, placeDesired)
         if (locationLines > 0) {
             place.maxLines = locationLines
             (place.layoutParams as LinearLayout.LayoutParams).topMargin = gap

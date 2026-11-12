@@ -18,6 +18,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
@@ -34,6 +35,7 @@ import cn.jlu.schedule.MainActivity
 import cn.jlu.schedule.R
 import cn.jlu.schedule.data.AccountDataContext
 import cn.jlu.schedule.data.AppPreferences
+import cn.jlu.schedule.reminder.TodoSync
 import cn.jlu.schedule.data.ScheduleBackupCodec
 import cn.jlu.schedule.data.TodoStore
 import cn.jlu.schedule.data.CustomBackgroundStorage
@@ -379,6 +381,48 @@ class SettingsFragment : Fragment() {
             AppPreferences.setVpnProxyMode(requireContext(), isChecked)
         }
 
+        val vpnKeyText = view.findViewById<TextView>(R.id.vpnKeyText)
+        fun refreshVpnKeyText() {
+            vpnKeyText.text = AppPreferences.getVpnCryptKey(requireContext())
+        }
+        refreshVpnKeyText()
+        view.findViewById<View>(R.id.rowVpnKey)?.setOnClickListener {
+            val currentKey = AppPreferences.getVpnCryptKey(requireContext())
+            val input = EditText(requireContext()).apply {
+                setText(currentKey)
+                hint = getString(R.string.settings_vpn_key_dialog_hint, cn.jlu.schedule.remote.WebVpnConverter.KEY_JLU)
+                setSingleLine(true)
+                textSize = 14f
+                val pad = (12 * resources.displayMetrics.density).toInt()
+                setPadding(pad, pad, pad, pad)
+            }
+            val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle(R.string.settings_vpn_key_dialog_title)
+                .setView(input)
+                .setPositiveButton(R.string.action_save, null)
+                .setNegativeButton(R.string.action_cancel, null)
+                .create()
+            UiFeedback.styleDialogSurface(dialog, ThemePaletteProvider.fromContext(requireContext()))
+            dialog.show()
+            dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)?.let {
+                UiFeedback.stylePrimaryButton(it, ThemePaletteProvider.fromContext(requireContext()))
+                it.setOnClickListener {
+                    val newKey = input.text.toString().trim()
+                    if (newKey.length != 16) {
+                        UiFeedback.showMessage(vpnKeyText, "密钥必须是 16 位字符串", ThemePaletteProvider.fromContext(requireContext()))
+                        return@setOnClickListener
+                    }
+                    AppPreferences.setVpnCryptKey(requireContext(), newKey)
+                    refreshVpnKeyText()
+                    dialog.dismiss()
+                    UiFeedback.showMessage(vpnKeyText, getString(R.string.settings_vpn_key_saved), ThemePaletteProvider.fromContext(requireContext()))
+                }
+            }
+            dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)?.let {
+                UiFeedback.styleSecondaryButton(it, ThemePaletteProvider.fromContext(requireContext()))
+            }
+        }
+
         showNonCurrentSwitch.isChecked = AppPreferences.isShowNonCurrentCourses(requireContext())
         showNonCurrentSwitch.setOnCheckedChangeListener { _, isChecked ->
             AppPreferences.setShowNonCurrentCourses(requireContext(), isChecked)
@@ -539,9 +583,8 @@ class SettingsFragment : Fragment() {
             val result = runCatching {
                 withContext(Dispatchers.IO) {
                     val content = if (backup) {
-                        val todos = AccountDataContext.get(requireContext().filesDir).capture().use { dir ->
-                            TodoStore.load(dir).map { with(ScheduleBackupCodec) { it.toBackupTodo() } }
-                        }.orEmpty()
+                        val todos = TodoSync.load(requireContext())
+                            .map { with(ScheduleBackupCodec) { it.toBackupTodo() } }
                         ImportedScheduleStorage.exportBackup(requireContext().filesDir, todos)
                     } else {
                         ImportedScheduleStorage.exportActiveTimetableText(

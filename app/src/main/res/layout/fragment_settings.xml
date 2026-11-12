@@ -195,6 +195,25 @@
                     style="@style/SettingsRowSwitch" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/rowVpnKey"
+                style="@style/SettingsRow">
+                <TextView
+                    style="@style/SettingsRowLabel"
+                    android:text="@string/settings_vpn_key" />
+                <TextView
+                    android:id="@+id/vpnKeyText"
+                    style="@style/SettingsRowLabel"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="13sp"
+                    android:width="150dp" />
+                <ImageView style="@style/SettingsRowChevron" android:contentDescription="@null" />
+            </LinearLayout>
+
             <TextView
                 style="@style/SettingsCardHint"
                 android:text="@string/settings_account_hint" />

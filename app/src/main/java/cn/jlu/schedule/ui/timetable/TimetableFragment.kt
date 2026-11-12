@@ -217,7 +217,7 @@ class TimetableFragment : Fragment() {
                                         getString(R.string.course_detail_edited)
                                     } else {
                                         result.exceptionOrNull()?.message
-                                            ?: getString(R.string.course_detail_delete_failed)
+                                            ?: getString(R.string.course_detail_edit_failed)
                                     }
                                     UiFeedback.showMessage(view, message, ThemePaletteProvider.fromContext(requireContext()))
                                 }

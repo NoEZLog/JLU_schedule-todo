@@ -17,7 +17,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import cn.jlu.schedule.R
-import cn.jlu.schedule.data.AccountDataContext
 import cn.jlu.schedule.data.AppPreferences
 import cn.jlu.schedule.data.ScheduleRepository
 import cn.jlu.schedule.data.TaskKind
@@ -412,9 +411,7 @@ class TodayScheduleFragment : Fragment() {
         themeColors: ThemeColors,
         hasCustomBackground: Boolean
     ) {
-        val todos = AccountDataContext.get(ctx.filesDir).capture().use { dir ->
-            TodoStore.load(dir)
-        }.orEmpty()
+        val todos = TodoSync.load(ctx)
         val now = System.currentTimeMillis()
         val dayStart = LocalDate.now().atStartOfDay(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
         val dayEnd = dayStart + 86_400_000L

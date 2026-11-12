@@ -29,6 +29,7 @@ import cn.jlu.schedule.data.TaskKind
 import cn.jlu.schedule.data.TodoItem
 import cn.jlu.schedule.data.TodoStore
 import cn.jlu.schedule.reminder.TodoReminderScheduler
+import cn.jlu.schedule.reminder.TodoSync
 import cn.jlu.schedule.ui.tools.AccountScopedActivity
 import cn.jlu.schedule.ui.theme.ThemePalette
 import cn.jlu.schedule.ui.theme.ThemePaletteProvider
@@ -119,13 +120,13 @@ class TodoListActivity : AccountScopedActivity() {
 
     private fun loadTodos() {
         todos.clear()
-        todos.addAll(withAccountData { TodoStore.load(it) }.orEmpty())
+        todos.addAll(TodoSync.load(this))
         renderTodos()
     }
 
     /** 全部待办写盘并对每一条重排闹钟 */
     private fun persistTodos() {
-        withAccountData { TodoStore.save(it, todos) }
+        TodoSync.saveAll(this, todos)
         for (item in todos) {
             TodoReminderScheduler.schedule(this, item)
         }
@@ -417,7 +418,7 @@ class TodoListActivity : AccountScopedActivity() {
                 todos.removeAll { it.id in selectedIds }
                 selectionMode = false
                 selectedIds.clear()
-                withAccountData { TodoStore.save(it, todos) }
+                TodoSync.saveAll(this, todos)
                 for (item in removed) {
                     TodoReminderScheduler.cancel(this, item)
                 }
@@ -461,7 +462,7 @@ class TodoListActivity : AccountScopedActivity() {
             .setMessage("确定删除「${item.title}」吗？其提醒也会一并取消。")
             .setPositiveButton("删除") { _, _ ->
                 todos.removeAll { it.id == item.id }
-                withAccountData { TodoStore.save(it, todos) }
+                TodoSync.saveAll(this, todos)
                 TodoReminderScheduler.cancel(this, item)
                 renderTodos()
             }

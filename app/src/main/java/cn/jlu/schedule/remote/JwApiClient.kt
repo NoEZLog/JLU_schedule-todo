@@ -75,7 +75,12 @@ object JwApiClient {
         "https://iedu.jlu.edu.cn/jwapp/sys/cjcx/*default/index.do",
         "https://iedu.jlu.edu.cn/jwapp/sys/cjcx/modules/cjcx/xscjcx.do",
         TpassConfig.CAS_LOGIN_URL,
-        "https://vpn.jlu.edu.cn/"
+        // WebVPN 会话 Cookie 多为 path 敏感（/login、/https、门户根路径各不相同），逐一取齐
+        "https://vpn.jlu.edu.cn/",
+        "https://vpn.jlu.edu.cn/login",
+        "https://vpn.jlu.edu.cn/index",
+        "https://vpn.jlu.edu.cn/https/",
+        "https://vpn.jlu.edu.cn/http/"
     )
 
     /** 登录后/拉取数据前，把 WebView 各业务路径的会话全部迁入原生 CookieJar */

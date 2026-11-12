@@ -376,7 +376,7 @@ class GradeInquiryActivity : AccountScopedActivity() {
                 withAccountData { GradeStore.save(it, allGrades) }
                 withAccountData { GradeStore.syncToGpaCourses(it, allGrades) }
                 renderGrades()
-                UiFeedback.showMessage(listContainer, getString(R.string.manage_deleted), palette)
+                UiFeedback.showMessage(listContainer, getString(R.string.grade_deleted), palette)
             }
             .setNegativeButton(R.string.action_cancel, null)
             .create()

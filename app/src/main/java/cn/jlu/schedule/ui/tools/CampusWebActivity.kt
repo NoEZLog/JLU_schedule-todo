@@ -104,6 +104,7 @@ class CampusWebActivity : AccountScopedActivity() {
             }, "JluPyfaBridge")
         }
 
+        cn.jlu.schedule.remote.VpnKeyCapture.attach(webView)
         webView.webViewClient = object : WebViewClient() {
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
                 handler?.cancel()
@@ -114,6 +115,7 @@ class CampusWebActivity : AccountScopedActivity() {
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
+                if (view != null && url != null) cn.jlu.schedule.remote.VpnKeyCapture.onPageFinished(view, url)
                 progressBar.visibility = View.GONE
                 // 页面跳转后同步最新 Cookie 回原生 CookieJar
                 JwApiClient.importAllWebViewCookies(this@CampusWebActivity)

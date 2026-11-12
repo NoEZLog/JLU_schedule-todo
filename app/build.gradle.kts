@@ -14,8 +14,8 @@ android {
         applicationId = "cn.jlu.schedule"
         minSdk = 26
         targetSdk = 36
-        versionCode = 18
-        versionName = "2.3.2"
+        versionCode = 25
+        versionName = "2.3.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

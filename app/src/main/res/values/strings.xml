@@ -97,6 +97,7 @@
     <string name="course_detail_delete_message">确定从当前课表删除「%1$s」吗？这会删除该课程的全部上课时间；重新覆盖导入课表时可能再次出现。</string>
     <string name="course_detail_deleted">已从当前课表删除课程</string>
     <string name="course_detail_delete_failed">课程已变化，请重新打开详情后再试</string>
+    <string name="course_detail_edit_failed">课程信息保存失败，请重新打开详情后再试</string>
     <string name="action_save">保存</string>
     <string name="timetable_add_course">手动添加课程</string>
     <string name="timetable_import">导入课表</string>
@@ -202,6 +203,7 @@
     <string name="grade_code_hint">课程代码（选填）</string>
     <string name="grade_delete_title">删除成绩</string>
     <string name="grade_delete_message">确定删除「%1$s」的成绩记录吗？</string>
+    <string name="grade_deleted">已删除成绩记录</string>
     <string name="grade_imported_from_gpa">已从绩点计算器导入 %1$d 门成绩</string>
     <string name="grade_open_web">查看教务原网页</string>
     <string name="grade_send_to_gpa">转入绩点计算器</string>
@@ -301,6 +303,11 @@
     <string name="course_detail_new_todo">＋ 新建日程</string>
     <string name="course_detail_edit">编辑课程</string>
     <string name="settings_vpn_proxy">校外模式（VPN 转接）</string>
+    <string name="settings_vpn_key">WebVPN 密钥</string>
+    <string name="settings_vpn_key_hint">若转接报 PARSE_FAILED 说明学校更换了密钥。获取方法：浏览器登录 vpn.jlu.edu.cn 后打开教务系统，复制其 WebVPN 链接中 32 位前缀之后的部分与前 32 位对照无法推导时，可在门户页面源码中搜索 encrypt 相关 JS 获取密钥。当前使用：%1$s</string>
+    <string name="settings_vpn_key_dialog_title">设置 WebVPN 密钥</string>
+    <string name="settings_vpn_key_dialog_hint">16 位密钥，默认 %1$s</string>
+    <string name="settings_vpn_key_saved">WebVPN 密钥已更新</string>
     <string name="settings_vpn_proxy_hint">开启后一键导入、成绩查询等请求经 vpn.jlu.edu.cn 转发，需先在「校园账号登录」完成 VPN 登录；关闭时直连失败也会自动转接</string>
     <string name="course_detail_edited">课程信息已更新</string>
     <string name="edit_course_name_hint">课程名称</string>

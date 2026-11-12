@@ -13,6 +13,8 @@ object AppPreferences {
     private const val KEY_TIMETABLE_FONT_SCALE = "timetable_font_scale"
     private const val KEY_SHOW_NON_CURRENT_COURSES = "show_non_current_courses"
     private const val KEY_VPN_PROXY_MODE = "vpn_proxy_mode"
+    private const val KEY_VPN_CRYPT_KEY = "vpn_crypt_key"
+    private const val KEY_VPN_CRYPT_IV = "vpn_crypt_iv"
     private const val KEY_DARK_MODE = "dark_mode"
     private const val KEY_REMINDER_ENABLED = "daily_reminder_enabled"
     private const val KEY_REMINDER_MINUTE = "daily_reminder_minute"
@@ -130,6 +132,34 @@ object AppPreferences {
     fun setVpnProxyMode(context: Context, enabled: Boolean) {
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .edit().putBoolean(KEY_VPN_PROXY_MODE, enabled).apply()
+    }
+
+    fun getVpnCryptKey(context: Context): String {
+        val stored = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_VPN_CRYPT_KEY, null) ?: return cn.jlu.schedule.remote.WebVpnConverter.KEY_JLU
+        // 迁移：历史上随旧版本 App 默认持久化过的密钥不再是现役密钥，重置为当前默认
+        if (stored == cn.jlu.schedule.remote.WebVpnConverter.KEY_DIDIDA ||
+            stored == cn.jlu.schedule.remote.WebVpnConverter.KEY_WRD
+        ) {
+            setVpnCryptKey(context, cn.jlu.schedule.remote.WebVpnConverter.KEY_JLU)
+            return cn.jlu.schedule.remote.WebVpnConverter.KEY_JLU
+        }
+        return stored
+    }
+
+    fun setVpnCryptKey(context: Context, key: String) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putString(KEY_VPN_CRYPT_KEY, key).apply()
+    }
+
+    fun getVpnCryptIv(context: Context): String? {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_VPN_CRYPT_IV, null)
+    }
+
+    fun setVpnCryptIv(context: Context, iv: String) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putString(KEY_VPN_CRYPT_IV, iv).apply()
     }
 
     fun setShowNonCurrentCourses(context: Context, show: Boolean) {

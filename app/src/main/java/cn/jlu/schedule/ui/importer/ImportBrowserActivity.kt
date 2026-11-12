@@ -174,6 +174,7 @@ class ImportBrowserActivity : AppCompatActivity() {
             }
         }
 
+        cn.jlu.schedule.remote.VpnKeyCapture.attach(webView)
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 val target = request?.url?.toString().orEmpty()
@@ -189,6 +190,7 @@ class ImportBrowserActivity : AppCompatActivity() {
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
+                cn.jlu.schedule.remote.VpnKeyCapture.onPageFinished(view!!, url!!)
                 super.onPageFinished(view, url)
                 if (!url.isNullOrBlank()) {
                     urlInput.setText(url)

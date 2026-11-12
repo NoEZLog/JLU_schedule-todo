@@ -320,9 +320,7 @@ object ImportedScheduleStorage {
         // 备份中携带待办时一并恢复到当前账号作用域；旧格式备份（无 todos 字段）保持现有待办不变。
         val backupTodos = ScheduleBackupCodec.decodeFile(content)?.todos.orEmpty()
         if (backupTodos.isNotEmpty()) {
-            AccountDataContext.get(filesDir).capture().use { scopeDir ->
-                with(ScheduleBackupCodec) { TodoStore.save(scopeDir, backupTodos.map { it.toTodoItem() }) }
-            }
+            with(ScheduleBackupCodec) { TodoStore.save(filesDir, backupTodos.map { it.toTodoItem() }) }
         }
         newProfiles.size
     }

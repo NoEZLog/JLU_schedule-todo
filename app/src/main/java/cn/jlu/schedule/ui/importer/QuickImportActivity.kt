@@ -126,11 +126,7 @@ class QuickImportActivity : AppCompatActivity() {
 
     /** 校外模式开启时，把吉大局内地址换成 WebVPN 转接地址供 WebView 加载 */
     private fun displayUrl(url: String): String =
-        if (cn.jlu.schedule.data.AppPreferences.isVpnProxyMode(this)) {
-            cn.jlu.schedule.remote.WebVpnConverter.wrap(url) ?: url
-        } else {
-            url
-        }
+        cn.jlu.schedule.remote.WebVpnConverter.displayUrl(this, url)
 
     private fun startAttempt() {
         if (::attempt.isInitialized) {
@@ -191,6 +187,7 @@ class QuickImportActivity : AppCompatActivity() {
             setAcceptThirdPartyCookies(webView, true)
         }
         webView.addJavascriptInterface(Bridge(attempt), "QuickImportBridge")
+        cn.jlu.schedule.remote.VpnKeyCapture.attach(webView)
         webView.webViewClient = object : WebViewClient() {
             override fun shouldInterceptRequest(
                 view: WebView,
@@ -223,6 +220,7 @@ class QuickImportActivity : AppCompatActivity() {
             }
 
             override fun onPageFinished(view: WebView, url: String) {
+                cn.jlu.schedule.remote.VpnKeyCapture.onPageFinished(view, url)
                 if (!attempt.collecting) return
                 val host = runCatching { android.net.Uri.parse(url).host ?: "" }.getOrDefault("")
                 injectCaptureHook(view)
